@@ -1,0 +1,40 @@
+@mixin paper-menu-color($id, $color) {
+		##{$id} { 
+			&.selected,
+			&:hover {
+				background: $color; }
+	}	
+}
+
+.paper-menu {
+	background: #fff;
+	clear: both;
+	color: #ccc;
+	float: left;
+	font-family: 'Oswald';
+	font-size: 1.5em;
+	line-height: 50px;
+	width: 100%;
+	li {
+		float: left;
+	}
+
+	a {
+		display: block;
+		height: 50px;
+		padding: 0 15px;
+		&.selected,
+		&:hover {
+			background: #55a5d6;
+			color: #fff;
+		}
+	}
+	@include paper-menu-color(nt, $ntColor);
+	@include paper-menu-color(corren, $correnColor);
+	@include paper-menu-color(nt, $ntColor);
+	@include paper-menu-color(nt, $ntColor);
+	@include paper-menu-color(nt, $ntColor);
+	@include paper-menu-color(nt, $ntColor);
+	@include paper-menu-color(nt, $ntColor);
+	@include paper-menu-color(nt, $ntColor);
+}

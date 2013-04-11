@@ -1,0 +1,44 @@
+@mixin menu-background($paper, $color) {
+	&.#{$paper} {
+		.menuLink {
+			&.selected,
+			&:hover {
+				background: $color;
+			}
+		}
+	}
+}
+
+.menu {
+	background: #fff;
+	clear: both;
+	color: #ccc;
+	float: left;
+	font-family: 'Oswald';
+	font-size: 1.5em;
+	line-height: 50px;
+	margin-bottom: 30px;
+	width: 100%;
+	li {
+		float: left;
+	}
+	@include menu-background(menu-nt, $ntColor);
+	@include menu-background(menu-corren, $correnColor);
+	@include menu-background(menu-mvt, $mvtColor);
+	@include menu-background(menu-unt, $untColor);
+	@include menu-background(menu-nsd, $nsdColor);
+	@include menu-background(menu-kuriren, $kurirenColor);
+	@include menu-background(menu-folkbladet, $folkbladetColor);
+	@include menu-background(menu-hg, $hgColor);
+}
+
+.menuLink {
+	display: block;
+	height: 50px;
+	padding: 0 15px;
+	&:hover,
+	&.selected {
+		background: #55a5d6;
+		color: #fff;
+	}
+}

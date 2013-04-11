@@ -2,14 +2,51 @@
 @import "compass/reset";
 
 // Fonts
-$baseFont: 'Oswald';
+$baseFont: 'Arial';
 
 // Colors
 $baseColor: #444;
+$ntColor: #006699;
+$correnColor: #c61212;
+$mvtColor: #2f5489;
+$untColor: #333;
+$nsdColor: #a72524;
+$kurirenColor: #0080c1;
+$folkbladetColor: #c30000;
+$hgColor: #ffe000;
+
+// General
+body { 
+	background: #faf6f3;
+	font-family: $baseFont;
+}
+
+a { 
+	color: $baseColor;
+	text-decoration: none;
+}
+
+h1 { 
+	font-family: 'Oswald';
+	font-size: 3em;
+	font-weight: bold;
+	line-height: 100px;
+	margin-left: 15px;
+}
+
+// Grid
+.container { 
+	clear: both; 
+	margin-left: -30px;
+	width: 1000px;
+}
 
 // Imports
-// The container for the article
-@import "articleContainer";
+@import "header";
+@import "paperMenu";
+@import "menu";
+@import "article";
+@import "helpers";
 
 /* apply a natural box layout model to all elements */
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }

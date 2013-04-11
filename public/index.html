@@ -10,15 +10,28 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<h1 class="text-center">Newsfeed</h1>
+			<section class="header">
+				<h1>Newsfeed</h1>
 
-			<ul class="menu">
-				<li><a href="#" class="menuLink" id="ntAllt">NT Allt</a></li>
-				<li><a href="#" class="menuLink" id="ntLok">NT Lokalt</a></li>
-				<li><a href="#" class="menuLink" id="ntNorrkoping">NT Norrköping</a></li>
-			</ul>
+				<ul class="paper-menu">
+					<li><a href="#" class="selected" id="nt">NT</a></li>
+					<li><a href="#" id="corren">Corren</a></li>
+					<li><a href="#" id="folkbladet">Folkbladet</a></li>
+					<li><a href="#" id="kuriren">Kuriren</a></li>
+					<li><a href="#" id="nsd">NSD</a></li>
+					<li><a href="#" id="hg">HG</a></li>
+					<li><a href="#" id="unt">UNT</a></li>
+					<li><a href="#" id="mvt">MVT</a></li>
+				</ul>
 
-			<div class="container">
+				<ul class="menu menu-nt clearfix">
+					<li><a href="#" class="menuLink selected" id="ntAllt">NT Allt</a></li>
+					<li><a href="#" class="menuLink" id="ntLok">NT Lokalt</a></li>
+					<li><a href="#" class="menuLink" id="ntNorrkoping">NT Norrköping</a></li>
+				</ul>
+			</section>
+
+			<div class="container clearfix">
 
 			</div>
 		</div>
@@ -26,10 +39,11 @@
 
 		<!-- Article Template -->
 		<script id="articleTemplate" type="text/template">
-			<h3><%= title %></h3>
-			<div class="date"><%= pubDate %></div>
-			<p><%= description %></p>
-			<a href="<%= link %>">Läs</a>
+			<a href="<%= link %>">
+				<h3><%= title %></h3>
+				<p><%= description %></p>
+				<div class="date"><%= pubDate %></div>
+			</a>
 		</script>
 
 		<script src="js/lib/jquery.min.js"></script>
