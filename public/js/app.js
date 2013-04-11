@@ -6,7 +6,7 @@ $(document).ready(function() {
 		var rssFeed = $(this).attr('id');
 		e.preventDefault();
 		new app.NewspaperView({ paper: rssFeed });
+
 	});
-	
 
 });

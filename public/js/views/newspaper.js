@@ -12,10 +12,18 @@ app.NewspaperView = Backbone.View.extend({
 	},
 
 	render: function() {
+		var _this = this;
+
 		this.$el.empty();
 		this.collection.each(function(article) {
 			this.renderArticle(article);
 		}, this);
+
+		setTimeout(function() {
+			_this.$el.isotope();
+		}, 0);
+
+		return this;
 	},
 
 	renderArticle: function(article) {
@@ -23,5 +31,6 @@ app.NewspaperView = Backbone.View.extend({
 			model: article
 		});
 		this.$el.append(articleView.render().el);
+		this.$el.isotope('reloadItems');
 	}
 });

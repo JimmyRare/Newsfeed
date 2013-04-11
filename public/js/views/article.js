@@ -2,7 +2,7 @@ var app = app || {};
 
 app.ArticleView = Backbone.View.extend({
 	tagName: 'article',
-	className: 'articleContainer',
+	className: 'article',
 	template: _.template($('#articleTemplate').html()),
 	render: function() {
 		this.$el.html(this.template(this.model.toJSON()));

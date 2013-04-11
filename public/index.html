@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Newsfeed</title>
 		<link rel="stylesheet" href="css/jquery-ui-1.10.2.custom.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/screen.css">
 	</head>
 	<body>
@@ -21,21 +22,19 @@
 
 			</div>
 		</div>
-		
-				
-
 
 
 		<!-- Article Template -->
 		<script id="articleTemplate" type="text/template">
 			<h3><%= title %></h3>
-			<div><%= pubDate %></div>
+			<div class="date"><%= pubDate %></div>
 			<p><%= description %></p>
 			<a href="<%= link %>">Läs</a>
 		</script>
 
 		<script src="js/lib/jquery.min.js"></script>
 		<script src="js/lib/jquery-ui-1.10.2.custom.min.js"></script>
+		<script src="js/lib/isotope.min.js"></script>
 		<script src="js/lib/underscore.min.js"></script>
 		<script src="js/lib/backbone.min.js"></script>
 		<script src="js/models/article.js"></script>
