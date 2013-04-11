@@ -27,15 +27,17 @@ var feeds = {
 	},
 	ntLok: {
 		url: 'http://www.nt.se/lok.rss'
+	},
+	ntNorrkoping: {
+		url: 'http://www.nt.se/norrkoping.rss'
 	}
 }
 
 // Get NT Allt feed
 app.get('/api/rss/:paper', function(request, response) {
-	var paper = request.params.paper;
 	feedr.readFeeds(feeds, function(err, result) {
 		if(!err) {
-			return response.send(result.ntAllt.rss.channel[0].item);
+			return response.send(result[request.params.paper].rss.channel[0].item);
 		} else {
 			console.log(err);
 		}
