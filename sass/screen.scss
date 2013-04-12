@@ -2,7 +2,7 @@
 @import "compass/reset";
 
 // Fonts
-$baseFont: 'Arial';
+$baseFont: 'Open Sans';
 
 // Colors
 $baseColor: #444;
@@ -27,7 +27,6 @@ a {
 }
 
 h1 { 
-	font-family: 'Oswald';
 	font-size: 3em;
 	font-weight: bold;
 	line-height: 100px;
@@ -58,3 +57,11 @@ h1 {
 	width: 960px;
 }
 
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width: 480px),
+	   only screen and (max-device-width : 480px) {
+  .wrapper { width: 320px;}
+  .container { width: 100%; margin-left: 0; }
+  .header { width: 100%; }
+  .article { margin-left: 0; width: 100%; }
+}
