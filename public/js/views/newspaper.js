@@ -9,16 +9,19 @@ app.NewspaperView = Backbone.View.extend({
 		this.collection.shift(); // don't as me why it includes the paper object in the collection.. :S
 
 		// Init isotope
-		this.$el.isotope();
+		setTimeout(function() {
+			if($('.article').length > 0) {
+				_this.$el.isotope();
+			}
+		}, 0);
 
 		// Show loader
 		this.$el.empty();
 		$('#followingBallsG').show();
 
 		// Fetch rss
-		this.collection.fetch({reset: true}).complete(function() {
-			_this.render();
-		});
+		this.collection.fetch({reset: true});
+		this.render();
 
 		// Re-render on reset(fetch)
 		this.collection.on('reset', this.render, this);
@@ -26,25 +29,28 @@ app.NewspaperView = Backbone.View.extend({
 
 	render: function() {
 		var _this = this;
-		//Hide loader
-		$('#followingBallsG').hide();
-		console.log('should be empty');
 		this.collection.each(function(article) {
-			this.renderArticle(article);
+			_this.renderArticle(article);
 		}, this);
 
 		setTimeout(function() {
-			_this.$el.isotope();
+			if($('.article').length > 0) {
+				_this.$el.isotope();
+			}
 		}, 0);
 
 		return this;
 	},
 
 	renderArticle: function(article) {
+		var _this = this;
 		var articleView = new app.ArticleView({
 			model: article
 		});
-		this.$el.append(articleView.render().el);
-		this.$el.isotope('reloadItems');
+		var $article = $(articleView.render().el);
+
+		$('#followingBallsG').hide();
+
+		_this.$el.append($article).isotope('reloadItems');
 	}
 });

@@ -1,6 +1,7 @@
 var app = app || {};
 
 $(document).ready(function() {
+	var rssFeed = 'ntAllt';
 
 	// Initialize View
 	new app.NewspaperView({ paper: 'ntAllt' });
@@ -20,7 +21,7 @@ $(document).ready(function() {
 
 	// When a rss link is clicked
 	$('.menu').on('click', '.menuLink', function(e) {
-		var rssFeed = $(this).attr('id');
+		rssFeed = $(this).attr('id');
 
 		e.preventDefault();
 
