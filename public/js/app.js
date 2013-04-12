@@ -3,6 +3,11 @@ var app = app || {};
 $(document).ready(function() {
 	var rssFeed = 'ntAllt';
 
+	var socket = io.connect('http://localhost');
+	socket.on('connected', function(data) {
+		console.log(data);
+	});
+
 	// Initialize View
 	new app.NewspaperView({ paper: 'ntAllt' });
 

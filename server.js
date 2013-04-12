@@ -1,10 +1,9 @@
-// Module dependencies
 var express = require('express'),
-	Feedr	= require('feedr').Feedr,
-	feedr   = new Feedr(); 	
-
-// Create server
-var app = express();
+	app = express(), 
+	server = require('http').createServer(app),
+	io = require('socket.io').listen(server),
+	FeedParser	= require('feedparser'),
+	request   = require('request'); 	
 
 // Configure server
 app.configure(function() {
@@ -15,7 +14,7 @@ app.configure(function() {
 
 // Start server
 var port = 3000;
-app.listen(port, function() {
+server.listen(port, function() {
 	console.log( 'Express server listening on port %d in %s mode', port, app.settings.env );
 	console.log(__dirname + '/public');
 });
@@ -142,12 +141,23 @@ var feeds = {
 }
 
 // Get NT Allt feed
-app.get('/api/rss/:paper', function(request, response) {
-	feedr.readFeeds(feeds, function(err, result) {
-		if(!err) {
-			return response.send(result[request.params.paper].rss.channel[0].item);
-		} else {
-			console.log(err);
-		}
-	});
+app.get('/api/rss/:paper', function(req, res) {
+	request(feeds[req.params.paper])
+	  .pipe(new FeedParser())
+	  .on('error', function (error) {
+	    console.error(error);
+	  })
+	  .on('meta', function (meta) {
+	    console.log('===== %s =====', meta.title);
+	  })
+	  .on('article', function(article){
+	    console.log('Got article: %s', article.title || article.description);
+	    socket.emit('article', article);
+	  });
+});
+
+// Socket.io
+io.sockets.on('connection', function(socket) {
+	socket.emit('connected', {data: 'Hej hej'});
+	console.log('connected');
 });
