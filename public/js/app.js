@@ -27,6 +27,13 @@ $(document).ready(function() {
 		$('.menuLink').removeClass('selected');
 		$(this).addClass('selected');
 
+		// Scroll down to content if on mobile
+		if($(window).width() < 480) {
+			$('html,body').animate({
+				scrollTop: $('.container').offset().top
+			}, 'fast');
+		}
+
 		// Create View
 		new app.NewspaperView({ paper: rssFeed });
 
