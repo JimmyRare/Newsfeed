@@ -47,6 +47,7 @@ h1 {
 @import "menu";
 @import "article";
 @import "helpers";
+@import "bubblingG";
 
 /* apply a natural box layout model to all elements */
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
