@@ -140,24 +140,25 @@ var feeds = {
 	}
 }
 
-// Get NT Allt feed
-app.get('/api/rss/:paper', function(req, res) {
-	request(feeds[req.params.paper])
-	  .pipe(new FeedParser())
-	  .on('error', function (error) {
-	    console.error(error);
-	  })
-	  .on('meta', function (meta) {
-	    console.log('===== %s =====', meta.title);
-	  })
-	  .on('article', function(article){
-	    console.log('Got article: %s', article.title || article.description);
-	    socket.emit('article', article);
-	  });
-});
+
 
 // Socket.io
 io.sockets.on('connection', function(socket) {
-	socket.emit('connected', {data: 'Hej hej'});
+	socket.emit('connected', {message: 'Hello from the server'});
 	console.log('connected');
+
+	socket.on('feed', function(data) {
+		request(feeds[data.rssFeed])
+		  .pipe(new FeedParser())
+		  .on('error', function (error) {
+		    console.error(error);
+		  })
+		  .on('meta', function (meta) {
+		    console.log('===== %s =====', meta.title);
+		  })
+		  .on('article', function(article){
+		    console.log('Got article: %s', article.title || article.description);
+		    socket.emit('article', article);
+		  });
+		});
 });

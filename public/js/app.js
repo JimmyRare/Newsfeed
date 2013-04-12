@@ -1,15 +1,12 @@
 var app = app || {};
+var socket = socket || io.connect('/');
 
 $(document).ready(function() {
 	var rssFeed = 'ntAllt';
 
-	var socket = io.connect('http://localhost');
 	socket.on('connected', function(data) {
-		console.log(data);
+		console.log(data.message);
 	});
-
-	// Initialize View
-	new app.NewspaperView({ paper: 'ntAllt' });
 
 	// Choose newspaper
 	$('.paper-menu').on('click', '.paper-menuLink', function(e) {
@@ -40,8 +37,11 @@ $(document).ready(function() {
 			}, 'fast');
 		}
 
-		// Create View
-		new app.NewspaperView({ paper: rssFeed });
+		// Tell the server that we want some articles
+		socket.emit('feed', { rssFeed: rssFeed });
+
+		// Init view
+		new app.ArticlesView();
 
 	});
 

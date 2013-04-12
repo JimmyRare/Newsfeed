@@ -1,14 +1,18 @@
 var app = app || {};
+var socket = socket || io.connect('/');
 
 app.ArticleView = Backbone.View.extend({
 	tagName: 'article',
 	className: 'article',
 	template: _.template($('#articleTemplate').html()),
+
+	initialize: function() {
+		this.render();
+	},
+
 	render: function() {
-		var model = this.model.toJSON();
-		// Remove GMT info
-		model.pubDate[0] = model.pubDate[0].substring(0, model.pubDate[0].length - 5);
-		this.$el.html(this.template(model));
+		this.$el.html(this.template(this.model));
 		return this;
 	}
+
 });
