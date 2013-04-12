@@ -5,7 +5,10 @@ app.ArticleView = Backbone.View.extend({
 	className: 'article',
 	template: _.template($('#articleTemplate').html()),
 	render: function() {
-		this.$el.html(this.template(this.model.toJSON()));
+		var model = this.model.toJSON();
+		// Remove GMT info
+		model.pubDate[0] = model.pubDate[0].substring(0, model.pubDate[0].length - 5);
+		this.$el.html(this.template(model));
 		return this;
 	}
 });

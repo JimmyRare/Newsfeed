@@ -31,10 +31,10 @@
 	}
 	@include paper-menu-color(nt, $ntColor);
 	@include paper-menu-color(corren, $correnColor);
-	@include paper-menu-color(nt, $ntColor);
-	@include paper-menu-color(nt, $ntColor);
-	@include paper-menu-color(nt, $ntColor);
-	@include paper-menu-color(nt, $ntColor);
-	@include paper-menu-color(nt, $ntColor);
-	@include paper-menu-color(nt, $ntColor);
+	@include paper-menu-color(mvt, $mvtColor);
+	@include paper-menu-color(unt, $untColor);
+	@include paper-menu-color(nsd, $nsdColor);
+	@include paper-menu-color(kuriren, $kurirenColor);
+	@include paper-menu-color(folkbladet, $folkbladetColor);
+	@include paper-menu-color(hg, $hgColor);
 }
