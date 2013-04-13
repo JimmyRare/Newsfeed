@@ -2,7 +2,7 @@ var app = app || {};
 var socket = socket || io.connect('/');
 
 app.ArticleView = Backbone.View.extend({
-	tagName: 'article',
+	tagName: 'div',
 	className: 'article',
 	template: _.template($('#articleTemplate').html()),
 
@@ -11,7 +11,7 @@ app.ArticleView = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.$el.html(this.template(this.model));
+		this.$el.html(this.template(this.model.toJSON()));
 		return this;
 	}
 

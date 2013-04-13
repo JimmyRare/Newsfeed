@@ -140,16 +140,25 @@ var feeds = {
 	}
 }
 
-
-
 // Socket.io
+io.set('log level', 1);
 io.sockets.on('connection', function(socket) {
+
+	var rssFeed = 'ntAllt';
+
 	socket.emit('connected', {message: 'Hello from the server'});
 	console.log('connected');
 
+	makeRequest(rssFeed);
+
 	socket.on('feed', function(data) {
-		request(feeds[data.rssFeed])
-		  .pipe(new FeedParser())
+		makeRequest(data.rssFeed);
+	});
+
+
+	function makeRequest(rssFeed) {
+		request(feeds[rssFeed])
+		  .pipe(new FeedParser)
 		  .on('error', function (error) {
 		    console.error(error);
 		  })
@@ -157,8 +166,9 @@ io.sockets.on('connection', function(socket) {
 		    console.log('===== %s =====', meta.title);
 		  })
 		  .on('article', function(article){
-		    console.log('Got article: %s', article.title || article.description);
+		    console.log('Got article: %s', article.title);
 		    socket.emit('article', article);
 		  });
-		});
+	}
+		
 });

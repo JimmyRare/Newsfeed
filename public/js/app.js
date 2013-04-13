@@ -4,6 +4,9 @@ var socket = socket || io.connect('/');
 $(document).ready(function() {
 	var rssFeed = 'ntAllt';
 
+	// Init view
+	new app.ArticlesView();
+
 	socket.on('connected', function(data) {
 		console.log(data.message);
 	});
@@ -27,6 +30,9 @@ $(document).ready(function() {
 
 		e.preventDefault();
 
+		$('.container').empty();
+		$('#followingBallsG').show();
+
 		$('.menuLink').removeClass('selected');
 		$(this).addClass('selected');
 
@@ -39,9 +45,6 @@ $(document).ready(function() {
 
 		// Tell the server that we want some articles
 		socket.emit('feed', { rssFeed: rssFeed });
-
-		// Init view
-		new app.ArticlesView();
 
 	});
 
