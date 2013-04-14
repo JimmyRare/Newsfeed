@@ -164,10 +164,14 @@ io.sockets.on('connection', function(socket) {
 		  })
 		  .on('meta', function (meta) {
 		    console.log('===== %s =====', meta.title);
+		    socket.emit('feed-start');
 		  })
 		  .on('article', function(article){
 		    console.log('Got article: %s', article.title);
 		    socket.emit('article', article);
+		  })
+		  .on('complete', function() {
+		  	socket.emit('feed-complete');
 		  });
 	}
 		

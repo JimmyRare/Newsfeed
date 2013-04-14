@@ -1,5 +1,6 @@
 var app = app || {};
 var socket = socket || io.connect('/');
+var paperId = paperId || 'nt';
 
 $(document).ready(function() {
 	var rssFeed = 'ntAllt';
@@ -13,7 +14,7 @@ $(document).ready(function() {
 
 	// Choose newspaper
 	$('.paper-menu').on('click', '.paper-menuLink', function(e) {
-		var paperId = $(this).attr('id');
+		paperId = $(this).attr('id');
 
 		e.preventDefault();
 
@@ -30,7 +31,10 @@ $(document).ready(function() {
 
 		e.preventDefault();
 
-		$('.container').empty();
+		// Clear when fetching new stream
+		// $('.container').empty();
+
+		// Show loading animation
 		$('#followingBallsG').show();
 
 		$('.menuLink').removeClass('selected');
