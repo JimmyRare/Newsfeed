@@ -112,9 +112,10 @@
 		<script id="articleTemplate" type="text/template">
 			<a href="<%= link %>">
 				<div class="plate"></div>
+				<h4 class="time"><%= time %></h4>
 				<h3><%= title %></h3>
 				<p><%= description %></p>
-				<div class="date"><%= dateAndTime %></div>
+				<div class="date" data-time="<%= dateAndTime %>"><%= date %></div>
 			</a>
 		</script>
 

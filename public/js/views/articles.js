@@ -10,7 +10,7 @@ app.ArticlesView = Backbone.View.extend({
 		this.$el.isotope({
 			itemSelector: '.article',
 			getSortData: {
-				latest: function( $article ) {
+				time: function( $article ) {
 					return $article.find('.date').text();
 				}
 			} 
@@ -24,7 +24,9 @@ app.ArticlesView = Backbone.View.extend({
 		});
 
 		socket.on('feed-complete', function() {
-			_this.$el.isotope('reloadItems').isotope({ sortBy: 'latest', sortAscending : false });
+			var $sortedItems = _this.$el.data('isotope').$filteredAtoms;
+			_this.$el.isotope('reloadItems')
+				.isotope({ sortby: 'time', sortAscending: true });
 
 			// Scroll down to the latest article of the requested feed
 			setTimeout(function() {
@@ -34,8 +36,8 @@ app.ArticlesView = Backbone.View.extend({
 			}, 100);
 
 			// Add a border to the latest article of the feed
-			$('.article').removeClass('special-border');
-			$('.' + rssFeed).first().addClass('special-border');
+			$article.removeClass('special-border');
+			$article.first().addClass('special-border');
 		});
 	}
 });
