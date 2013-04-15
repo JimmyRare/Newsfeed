@@ -1,6 +1,7 @@
 var app = app || {};
 var socket = socket || io.connect('/');
 var paperId = paperId || 'nt';
+var rssFeed = rssFeed || 'ntAllt';
 
 app.ArticleView = Backbone.View.extend({
 	tagName: 'div',
@@ -22,7 +23,7 @@ app.ArticleView = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.$el.html(this.template(this.model.toJSON()));
+		this.$el.html(this.template(this.model.toJSON())).addClass(rssFeed);
 		return this;
 	}
 
