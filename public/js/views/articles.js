@@ -17,6 +17,7 @@ app.ArticlesView = Backbone.View.extend({
 		});
 
 		this.collection = new app.Articles();
+
 		this.collection.on('add', function(article) {
 			var articleView = new app.ArticleView({ model: article, id: article.cid });
 			_this.$el.append(articleView.el);

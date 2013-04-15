@@ -61,11 +61,18 @@ h1 {
 	width: 960px;
 }
 
+@media only screen and (max-width: 768px),
+	   only screen and (max-device-width : 768px) {
+  .wrapper { width: 630px; }
+  .container { width: 660px; }
+  .header { width: 630px; }
+}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (max-width: 480px),
 	   only screen and (max-device-width : 480px) {
   .wrapper { width: 320px;}
   .container { width: 100%; margin-left: 0; }
   .header { width: 100%; }
-  .article { margin-left: 0; width: 100%; }
+  .article { margin-left: 10px;}
 }
