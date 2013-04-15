@@ -30,13 +30,25 @@
 	&.hg:before { border-top-color: $hgColor; border-right-color: $hgColor; }
 	&.unt:before { border-top-color: $untColor; border-right-color: $untColor; }
 	&.mvt:before { border-top-color: $mvtColor; border-right-color: $mvtColor; }
+	&.ab:before { border-top-color: $abColor; border-right-color: $abColor; }
 
 	&.nt .plate { background-color: $ntColor; }
 	&.kuriren .plate { background-color: $kurirenColor; }
 	&.nsd .plate { background-color: $nsdColor; }
 	&.hg .plate { background-color: $hgColor; }
 	&.unt .plate { background-color: $untColor; }
-	&.mvt .plate { background-color: $ntColor; }
+	&.mvt .plate { background-color: $mvtColor; }
+	&.ab .plate { background-color: $abColor; }
+
+	&.special-border { 
+		&.nt { border: 1px solid $ntColor; }
+		&.kuriren { border: 1px solid $kurirenColor; }
+		&.nsd { border: 1px solid $nsdColor; }
+		&.hg { border: 1px solid $hgColor; }
+		&.unt { border: 1px solid $untColor; }
+		&.mvt { border: 1px solid $mvtColor; }
+		&.ab { border: 1px solid $abColor; }
+	}
 
 	h3 {
 		font-size: 1.3em;
@@ -45,9 +57,17 @@
 		margin-bottom: 5px;
 	}
 
+	img {
+		border: 3px solid #fff;
+		box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+		-webkit-transform: rotate(-3deg);
+	}
+
 	.date {
 		background: #fafafa;
 		border-radius: 0 0 3px 3px;
+		border-top: 1px solid #ccc;
+		box-shadow: 0 0 5px rgba(0, 0, 0, .15);
 		bottom: 0;
 		font-size: 0.7em;
 		left: 0;

@@ -29,6 +29,7 @@
 	@include menu-background(menu-kuriren, $kurirenColor);
 	@include menu-background(menu-folkbladet, $folkbladetColor);
 	@include menu-background(menu-hg, $hgColor);
+	@include menu-background(menu-ab, $abColor);
 	.menuLink {
 		&:hover,
 		&.selected { color: #fff; }
@@ -37,5 +38,3 @@
 		padding: 0 15px;
 	}
 }
-
-.menu-nt { display: block; }

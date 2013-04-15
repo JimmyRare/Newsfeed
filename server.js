@@ -137,6 +137,11 @@ var feeds = {
 	},
 	mvtFamilje: {
 		url: 'http://www.mvt.se/familje.rss'
+	},
+
+	// Aftonbladet
+	abNyheter: {
+		url: 'http://www.aftonbladet.se/nyheter/rss.xml'
 	}
 }
 
@@ -149,7 +154,7 @@ io.sockets.on('connection', function(socket) {
 	socket.emit('connected', {message: 'Hello from the server'});
 	console.log('connected');
 
-	makeRequest(rssFeed);
+	//makeRequest(rssFeed);
 
 	socket.on('feed', function(data) {
 		makeRequest(data.rssFeed);

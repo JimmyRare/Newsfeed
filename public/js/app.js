@@ -1,9 +1,9 @@
 var app = app || {};
 var socket = socket || io.connect('/');
 var paperId = paperId || 'nt';
+var rssFeed = 'ntAllt';
 
 $(document).ready(function() {
-	var rssFeed = 'ntAllt';
 
 	// Init view
 	new app.ArticlesView();
@@ -39,13 +39,6 @@ $(document).ready(function() {
 
 		$('.menuLink').removeClass('selected');
 		$(this).addClass('selected');
-
-		// Scroll down to content if on mobile
-		if($(window).width() < 480) {
-			$('html,body').animate({
-				scrollTop: $('.container').offset().top
-			}, 'fast');
-		}
 
 		// Tell the server that we want some articles
 		socket.emit('feed', { rssFeed: rssFeed });

@@ -1,6 +1,7 @@
 {
     "name": "newsfeed",
     "version": "0.0.1-9",
+    "version": "0.0.1-11",
     "description": "Fecth latest news from newspapers",
     "dependencies": {
         "express": "~3.1.0",
