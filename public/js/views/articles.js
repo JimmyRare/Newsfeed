@@ -9,14 +9,16 @@ app.ArticlesView = Backbone.View.extend({
 
 		this.collection = new app.Articles();
 
-		_this.$el.isotope({
-			itemSelector: '.article',
-			getSortData: {
-				dateAndTime: function( $elem ) {
-					return $elem.find('.date').attr('data-time');
-				}
-			} 
-		});
+		this.$el.imagesLoaded(function() {
+			isotope({
+				itemSelector: '.article',
+				getSortData: {
+					dateAndTime: function( $elem ) {
+						return $elem.find('.date').attr('data-time');
+					}
+				} 
+			});
+		}
 
 		this.collection.on('add', function(article) {
 			var articleView = new app.ArticleView({ model: article, id: article.cid });
