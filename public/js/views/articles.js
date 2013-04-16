@@ -9,6 +9,7 @@ app.ArticlesView = Backbone.View.extend({
 
 		this.collection = new app.Articles();
 
+
 		this.$el.imagesLoaded(function() {
 			_this.$el.isotope({
 				itemSelector: '.article',
@@ -27,8 +28,11 @@ app.ArticlesView = Backbone.View.extend({
 
 		socket.on('feed-complete', function() {
 			// Sort articles
-			_this.$el.isotope('reloadItems')
+			_this.$el.imagesLoaded(function() {
+				_this.$el.isotope('reloadItems')
 				.isotope({ sortBy: 'dateAndTime', sortAscending: false });
+			});
+				
 
 			// Scroll down to the latest article of the requested feed
 			setTimeout(function() {

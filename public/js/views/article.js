@@ -32,8 +32,6 @@ app.ArticleView = Backbone.View.extend({
 		this.model.set('dateFormat', dateFormat);
 		this.model.set('millis', millis);
 
-		console.log(date);
-
 		// Give it the class of paperId
 		this.$el.addClass(paperId);
 
