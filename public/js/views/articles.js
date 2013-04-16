@@ -10,7 +10,7 @@ app.ArticlesView = Backbone.View.extend({
 		this.collection = new app.Articles();
 
 		this.$el.imagesLoaded(function() {
-			isotope({
+			_this.$el.isotope({
 				itemSelector: '.article',
 				getSortData: {
 					dateAndTime: function( $elem ) {
@@ -18,7 +18,7 @@ app.ArticlesView = Backbone.View.extend({
 					}
 				} 
 			});
-		}
+		});
 
 		this.collection.on('add', function(article) {
 			var articleView = new app.ArticleView({ model: article, id: article.cid });
