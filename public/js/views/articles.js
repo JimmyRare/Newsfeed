@@ -6,17 +6,17 @@ app.ArticlesView = Backbone.View.extend({
 	el: '.container',
 	initialize: function() {
 		var _this = this;
-		var $article = $('.article');
-		this.$el.isotope({
+
+		this.collection = new app.Articles();
+
+		_this.$el.isotope({
 			itemSelector: '.article',
 			getSortData: {
-				time: function( $article ) {
-					return $article.find('.date').text();
+				dateAndTime: function( $elem ) {
+					return $elem.find('.date').attr('data-time');
 				}
 			} 
 		});
-
-		this.collection = new app.Articles();
 
 		this.collection.on('add', function(article) {
 			var articleView = new app.ArticleView({ model: article, id: article.cid });
@@ -24,9 +24,9 @@ app.ArticlesView = Backbone.View.extend({
 		});
 
 		socket.on('feed-complete', function() {
-			var $sortedItems = _this.$el.data('isotope').$filteredAtoms;
+			// Sort articles
 			_this.$el.isotope('reloadItems')
-				.isotope({ sortby: 'time', sortAscending: true });
+				.isotope({ sortBy: 'dateAndTime', sortAscending: false });
 
 			// Scroll down to the latest article of the requested feed
 			setTimeout(function() {
@@ -36,8 +36,8 @@ app.ArticlesView = Backbone.View.extend({
 			}, 100);
 
 			// Add a border to the latest article of the feed
-			$article.removeClass('special-border');
-			$article.first().addClass('special-border');
+			$('article').removeClass('special-border');
+			$('article').first().addClass('special-border');
 		});
 	}
 });
